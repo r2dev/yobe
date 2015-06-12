@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<form action="{{ url_for('auth.register') }}" method="post">
+	{{form.email}}
+	{{form.username}}
+	{{form.password}}
+	{{form.confirm}}	
+	{{form.submit}}
+</form>
+<a href="{{url_for('auth.login')}}">login</a>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+</html>
