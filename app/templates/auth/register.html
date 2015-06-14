@@ -8,10 +8,10 @@
 	{{form.submit}}
 </form>
 <a href="{{url_for('auth.login')}}">login</a>
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
+		{{ message }}
     </div>
     {% endfor %}
 </html>

@@ -1,5 +1,6 @@
 from . import db, login_manager
 from flask.ext.login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 class User(UserMixin, db.Model):
 	__tablename__ = 'users'
 
@@ -18,3 +19,10 @@ class User(UserMixin, db.Model):
 
 	def verify_password(self, password):
 		return check_password_hash(self.password_hash, password)
+
+	def __repr__(self):
+		return '<User %r>' % self.username
+	def __init__(self, email, username, password):
+		self.username = username
+		self.password_hash = generate_password_hash(password)
+		self.email = email

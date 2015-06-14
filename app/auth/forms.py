@@ -1,14 +1,14 @@
 from flask.ext.wtf import Form
 from wtforms import SubmitField, TextField, PasswordField, validators, BooleanField, StringField
-from wtforms.validators import InputRequired, Length, Email, EqualTo, Regexp
-
+from wtforms.validators import Required, Length, Email, EqualTo, Regexp
+from ..models import User
 class RegisterationForm(Form):
-	email = StringField('Email', validators=[InputRequired(), Length(1,64), Email ])
+	email = StringField('Email', validators=[Required(), Length(1,64), Email()0])
 	
-	username = StringField('Username', validators=[InputRequired(), Length(1,64), 
+	username = StringField('Username', validators=[Required(), Length(1,64), 
 		Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0, 'Invalid username')])
 	password = PasswordField('New Password', 
-		validators=[InputRequired(), EqualTo('confirm', 'Passwords must match')])
+		validators=[Required(), EqualTo('confirm', 'Passwords must match')])
 	confirm = PasswordField('Repeat Password')
 	submit = SubmitField('Register')
 
@@ -21,7 +21,7 @@ class RegisterationForm(Form):
 			raise ValidationError('Username already registered')
 
 class LoginForm(Form):
-	email = StringField('Email', validators=[InputRequired(), Length(1,64), Email()])
-	password = PasswordField('Password', validators=[InputRequired()])
+	email = StringField('Email', validators=[Required(), Length(1,64), Email()])
+	password = PasswordField('Password', validators=[Required()])
 	remember_me = BooleanField('Remember me')
 	submit = SubmitField('Log in')
