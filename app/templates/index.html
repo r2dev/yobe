@@ -1,4 +1,6 @@
 <html>
-hello {{current_user.email}}
+{% if current_user.is_authenticated() %}
+	hello {{current_user.username}}
+{% endif %}
 <a href="{{url_for('auth.logout')}}">logout</a>
 </html>
