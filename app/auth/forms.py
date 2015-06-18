@@ -3,7 +3,7 @@ from wtforms import SubmitField, TextField, PasswordField, validators, BooleanFi
 from wtforms.validators import Required, Length, Email, EqualTo, Regexp
 from ..models import User
 class RegisterationForm(Form):
-	email = StringField('Email', validators=[Required(), Length(1,64), Email()0])
+	email = StringField('Email', validators=[Required(), Length(1,64), Email()])
 	
 	username = StringField('Username', validators=[Required(), Length(1,64), 
 		Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0, 'Invalid username')])
