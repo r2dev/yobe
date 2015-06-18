@@ -33,13 +33,13 @@ login_manager.session_protection = 'basic'
 login_manager.login_view = 'auth_login'
 login_manager.init_app(yoke)
 
-
+from .main import main as main_blueprint
+yoke.register_blueprint(main_blueprint)
 
 from .auth import auth as auth_blueprint
 yoke.register_blueprint(auth_blueprint, url_prefix='/auth')
 
-from .main import main as main_blurprint
-yoke.register_blueprint(auth_blueprint)
+
 db.create_all()
 
 
