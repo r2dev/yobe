@@ -1,6 +1,14 @@
 <html>
 {% if current_user.is_authenticated() %}
 	hello {{current_user.username}}
-{% endif %}
+	{% import "bootstrap/wtf.html" as wtf %}
+	{{ wtf.quick_form(form) }}
+
+
+{% for post in posts %}
+	{{ post.body }} <br>
+{% endfor %}
+
 <a href="{{url_for('auth.logout')}}">logout</a>
+{% endif %}
 </html>

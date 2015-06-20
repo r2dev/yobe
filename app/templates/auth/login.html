@@ -1,11 +1,8 @@
 <!doctype html>
 <html>
+{% import "bootstrap/wtf.html" as wtf%}
 <form action="{{ url_for('auth.login') }}" method="post">
-	{{ form.email }}
-	{{ form.password }}
-	{{ form.remember_me}}
-	{{ form.submit }}
-	{{ form.csrf_token }}
+	{{wtf.quick_form(form)}}
 </form>
 {% if form.errors %}
     <ul class="errors">
