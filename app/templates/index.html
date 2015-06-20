@@ -1,14 +1,16 @@
-<html>
+
 {% if current_user.is_authenticated() %}
 	hello {{current_user.username}}
 	{% import "bootstrap/wtf.html" as wtf %}
 	{{ wtf.quick_form(form) }}
 
 
-{% for post in posts %}
-	{{ post.body }} <br>
-{% endfor %}
+	{% for post in posts %}
+		{{ post.body }} <br>
+	{% endfor %}
 
 <a href="{{url_for('auth.logout')}}">logout</a>
+{% else %}
+<a href="{{ url_for('auth.login') }}">Log In</a>
+<a href="{{ url_for('auth.register') }}">Register</a>
 {% endif %}
-</html>

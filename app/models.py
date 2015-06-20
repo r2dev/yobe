@@ -70,6 +70,6 @@ class Post(db.Model):
 	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 	author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+login_manager.anonymous_user = AnonymousUserMixin
 
-	
 
