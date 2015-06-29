@@ -17,6 +17,9 @@ def index():
 	posts = Post.query.filter_by(author_id=current_user.get_id()).order_by(
 		Post.timestamp.desc())
 	return render_template('index.html', form=form, posts=posts)
+@main.route('/following')
+def following():
+	pass
 @main.route('/user/<int:user_id>')
 def user(user_id):
 	posts = Post.query.filter_by(author_id=user_id).order_by(

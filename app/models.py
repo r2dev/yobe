@@ -56,6 +56,10 @@ class User(UserMixin, db.Model):
 	def is_followed_by(self, user):
 		return self.followers.filter_by(
 			follower_id=user.id).first() is not None
+	@property
+	def followed_users(self):
+	    return User.query.join(Follow, Follow.follower_id == self.id)
+	
 	
 
 @login_manager.user_loader

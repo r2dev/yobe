@@ -30,7 +30,7 @@ yoke.config['SQLALCHEMY_RECORD_QUERIES'] = True
 #init login_manager with yoke
 login_manager = LoginManager()
 login_manager.session_protection = 'basic'
-login_manager.login_view = 'auth_login'
+login_manager.login_view = 'auth.login'
 login_manager.init_app(yoke)
 
 from .main import main as main_blueprint
